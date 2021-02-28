@@ -79,7 +79,7 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
+  adapter: postgresql
   database: elearning_production
-  username: postgres
-  password: <%= ENV['ELEARNING_DATABASE_PASSWORD'] %>
+  pool: 5
+  timeout: 5000
