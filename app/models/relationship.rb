@@ -6,5 +6,6 @@ class Relationship < ApplicationRecord
   validates :follower_id, presence: true
   validates :followed_id, presence: true
 
+  # アソシエーションの定義。activityではなくactionという名前で働く。
   has_one :activity, as: :action, dependent: :destroy
 end
