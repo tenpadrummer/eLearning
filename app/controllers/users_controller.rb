@@ -56,10 +56,6 @@ class UsersController < ApplicationController
     redirect_to root_url unless @user == current_user
   end
 
-  def require_login # ログインを要求するメソッド
-    redirect_to login_url unless logged_in?
-  end
-
   def require_admin # ユーザーに対し管理者か判定するメソッド
     redirect_to root_url unless current_user.admin?
   end

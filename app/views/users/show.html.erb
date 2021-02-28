@@ -41,16 +41,16 @@
                   <%= link_to gravatar_for @user, size: 100%>
                   <div class="media-body p-2">
                     <% if activity.action_type == "Lesson"%>
-                      <h4 class="ml-2"><%= activity.action.user.nickname %> learned <%= activity.action.category.words.count %> of <%= activity.action.category.words.count %> in <%=activity.action.category_id %></h4>
+                      <h4 class="ml-2"><%= activity.action.user.nickname %>は<%=activity.action.category.title %>を<%= activity.action.category.words.count %>問取り組みました。</h4>
                     <% else %>
-                      <h4 class="ml-2"><%= @user.nickname%> followed <%= rel_activity(activity.action_id).nickname%></h4>
+                      <h4 class="ml-2"><%= @user.nickname%>は<%= rel_activity(activity.action_id).nickname%>をフォローしました。</h4>
                     <% end %>
                   </div>
                 </div>
                 <hr />
               <% end %>
             <% else %>
-              <h4 class="text-center">Nothing to show</h4>
+              <h4 class="text-center">まだ何も行っていません。</h4>
             <% end%>
           </div>
         </div>

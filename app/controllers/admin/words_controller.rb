@@ -19,7 +19,7 @@ module Admin
       category = Category.find(params[:category_id])
       @word = category.words.build(word_params)
       if @word.save
-        redirect_to admin_category_words_url
+        redirect_to admin_categories_path
       else
         render :new
       end
@@ -36,7 +36,7 @@ module Admin
     def update
       @word = Word.find(params[:id])
       if @word.update_attributes(word_params)
-        redirect_to admin_category_words_url
+        redirect_to admin_categories_path
       else
         render :edit
       end
@@ -44,7 +44,7 @@ module Admin
 
     def destroy
       @word = Word.find(params[:id]).destroy
-      redirect_to admin_category_words_url
+      redirect_to admin_categories_path
     end
 
     private

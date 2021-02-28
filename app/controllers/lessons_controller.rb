@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class LessonsController < ApplicationController
+  before_action :require_login
+  
   def index
     @lesson = Lesson.new
   end

@@ -6,8 +6,8 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="card card-body">
-            <h3 class="text-center">? <%= @lesson.next_word.content %> ?</h3>
-            <h5 class="text-right m-2"><%= (@lesson.answers).count + 1  %>of<%= @lesson.category.words.count %></h5>
+            <h3 class="text-center"><%= @lesson.next_word.content %></h3>
+            <h5 class="text-right m-2"><%= @lesson.category.words.count %>問中<%= (@lesson.answers).count + 1  %>問目</h5>
           </div>
           <div class="card card-body">
             <% @lesson.next_word.choices.each do |choice| %>

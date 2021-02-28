@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class AnswersController < ApplicationController
+  before_action :require_login
+
   def index; end
 
   def new

@@ -22,21 +22,21 @@
                 <div class="media p-2">
                   <%= link_to gravatar_for activity.user, size: 100%>
                   <div class="media-body p-2">
-                    <h4 class="ml-2"><%= activity.action.user.nickname %> learned <%= activity.action.category.words.count %> of <%= activity.action.category.words.count %> in <%=activity.action.category.title %></h4>
+                    <h4 class="ml-2"><%= activity.action.user.nickname %>は<%=activity.action.category.title %>を<%= activity.action.category.words.count %>問取り組みました。</h4>
                   </div>
                 </div>
               <% else %>
                 <div class="media p-2">
                   <%= link_to gravatar_for activity.user, size: 100 %>
                   <div class="media-body p-auto m-auto">
-                    <h4 class="ml-2"><%= activity.user.nickname %> followed  <%=link_to user_act(activity.action.followed_id).nickname, user_path(user_act(activity.action.followed_id).id) %></h4>
+                    <h4 class="ml-2"><%= activity.user.nickname %>は<%=link_to user_act(activity.action.followed_id).nickname, user_path(user_act(activity.action.followed_id).id) %>をフォローしました。</h4>
                   </div>
                 </div>
               <% end %>
               <hr />
             <% end %>
           <% else %>
-            <h4 class="text-center">Nothing to show</h4>
+            <h4 class="text-center">まだ何も行っていません。</h4>
           <% end %>
         </div>
       </div>
