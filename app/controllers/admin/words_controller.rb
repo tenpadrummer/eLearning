@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# 管理者専用なのでモジュール化
 module Admin
   class WordsController < AdminController
     def index
@@ -9,7 +10,7 @@ module Admin
     def new
       category = Category.find(params[:category_id])
       @word = category.words.build
-      3.times do
+      3.times do # 3回繰り返す
         @word.choices.build
       end
     end
@@ -20,7 +21,7 @@ module Admin
       if @word.save
         redirect_to admin_category_words_url
       else
-        render 'new'
+        render :new
       end
     end
 
@@ -37,7 +38,7 @@ module Admin
       if @word.update_attributes(word_params)
         redirect_to admin_category_words_url
       else
-        render 'edit'
+        render :edit
       end
     end
 

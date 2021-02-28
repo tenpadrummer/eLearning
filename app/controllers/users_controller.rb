@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to root_url
     else
-      render 'signup'
+      render :signup
     end
   end
 
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
     if @user.update_attributes(user_params)
       redirect_to current_user
     else
-      render 'edit'
+      render :edit
     end
   end
 
@@ -51,16 +51,16 @@ class UsersController < ApplicationController
     params.require(:user).permit(:nickname, :realname, :email, :password, :password_confirmation)
   end
 
-  def correct_user
+  def correct_user # 現在ログインしているユーザーと更新したいユーザー情報が一致しているか
     @user = User.find(params[:id])
     redirect_to root_url unless @user == current_user
   end
 
-  def require_login
+  def require_login # ログインを要求するメソッド
     redirect_to login_url unless logged_in?
   end
 
-  def require_admin
+  def require_admin # ユーザーに対し管理者か判定するメソッド
     redirect_to root_url unless current_user.admin?
   end
 end

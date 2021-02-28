@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# 管理者専用なのでモジュール化
 module Admin
   class CategoriesController < AdminController
     def index
@@ -15,7 +16,7 @@ module Admin
       if @category.save
         redirect_to admin_categories_path
       else
-        render 'new'
+        render :new
       end
     end
 
@@ -28,7 +29,7 @@ module Admin
       if @category.update_attributes(category_params)
         redirect_to admin_categories_path
       else
-        render 'edit'
+        render :edit
       end
     end
 

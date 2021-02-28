@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# 管理者専用なのでモジュール化
 module Admin
   class UsersController < AdminController
     def index
@@ -8,7 +9,7 @@ module Admin
 
     def update
       @user = User.find(params[:id])
-      if @user.admin?
+      if @user.admin? # ユーザーが管理者かチェック
         @user.update(admin: false)
       else
         @user.update(admin: true)

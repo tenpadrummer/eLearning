@@ -9,7 +9,7 @@ class LessonsController < ApplicationController
     @lesson = Lesson.new(lesson_params)
     if @lesson.save
       redirect_to new_lesson_answer_url(@lesson)
-      @lesson.create_activity(user_id: current_user.id)
+      @lesson.create_activity(user_id: current_user.id) # レッスンに対してアクティビィティを作成する。
     end
   end
 

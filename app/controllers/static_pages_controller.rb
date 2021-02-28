@@ -8,6 +8,4 @@ class StaticPagesController < ApplicationController
       render 'users/home_feed'
     end
   end
-
-  def about; end
 end
