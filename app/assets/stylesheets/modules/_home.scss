@@ -8,7 +8,7 @@
 
 .home-title {
   text-align: center;
-  font-size: 120px;
+  font-size: 6.4em;
   color: #fff;
 }
 
@@ -46,11 +46,17 @@
   font-size: 6rem;
 }
 
+@media screen and (max-width: 530px) {
+  .signup-title {
+    padding: 10%;
+    font-size: 4.5rem;
+  }
+}
 
 @media screen and (max-width: 800px) {
   .home-title {
     text-align: center;
-    font-size: 45px;
+    font-size: 4em;
   }
   .user-list {
     margin-top: 20px;
@@ -76,5 +82,11 @@
   table td:before {
     content: attr(aria-label);
     float: left;
-    }
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .home-title {
+    font-size: 1.8em;
+  }
 }
