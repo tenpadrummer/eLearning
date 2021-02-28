@@ -1,0 +1,137 @@
+.jumbotron {
+  background: image-url('home.jpg') no-repeat center center;
+  background-size: cover;
+  padding-top: 20%;
+  padding-bottom: 30%;
+  margin-bottom: 0;
+}
+
+.home-title {
+  text-align: center;
+  font-size: 120px;
+  color: #fff;
+}
+
+.btn-signup {
+  border-radius: 25px;
+  box-shadow: 0 3px 0 0 #007299;
+}
+
+.btn-signup.raised:active, .btn-signup.raised.active {
+	background: #33a6cc;
+	box-shadow: none;
+	margin-bottom: -3px;
+	margin-top: 3px;
+}
+
+.navbar-collapse {
+  display: inline;
+}
+
+#services {
+  padding-top: 10%;
+  padding-bottom: 10%;
+  background: image-url('service.jpg') no-repeat center center;
+  background-size: cover;
+  color: #fff;
+}
+
+#contact {
+  background: image-url('contact.jpg') no-repeat center center;
+  background-size: cover;
+  padding-top: 10%;
+  padding-bottom: 10%;
+  color: #fff;
+}
+
+#contact-form {
+  width: 50%;
+  margin: 50px auto 0;
+}
+
+#contact-form input[type=text],
+#contact-form input[type=email],
+#contact-form input[type=tel],
+#contact-form textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 15px;
+  background-color: rgba(255,255,255,0.05);
+  color: #fff;
+  outline: none;
+}
+
+#contact-form textarea {
+  height: 225px;
+}
+
+#contact-form input[type=submit] {
+  display: block;
+  width: 100%;
+  margin: 40px auto 0;
+  padding: 15px;
+  background-color: transparent;
+  color:rgba(255,255,255,0.6);
+  cursor: pointer;
+}
+
+#contact-form input[type=submit]:hover {
+  background-color: rgba(255,255,255,0.05);
+}
+
+.my-twitter,
+.my-facebook,
+.my-instagram {
+  color: black;
+}
+
+.home-title,
+.section-heading,
+.signup-title {
+  font-family: 'Rock Salt', cursive;
+}
+
+#signup-page {
+  background: image-url('signup.jpg') no-repeat center center;
+  background-size: cover;
+  padding-top: 10%;
+  padding-bottom: 10%;
+}
+
+.signup-title {
+  padding: 80px 50px;
+}
+
+
+@media screen and (max-width: 800px) {
+  .home-title {
+    text-align: center;
+    font-size: 45px;
+  }
+  .user-list {
+    margin-top: 20px;
+  }
+  .card-header {
+    text-align: center;
+  }
+  tbody {
+    vertical-align: middle;
+  }
+  table thead {
+    display: none;
+  }
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+  }
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    text-align: center;
+  }
+  table td:before {
+    content: attr(aria-label);
+    float: left;
+    }
+}

@@ -1,0 +1,8 @@
+# frozen_string_literal: true
+
+class Choice < ApplicationRecord
+  belongs_to :word
+  has_many :answers, dependent: :destroy
+
+  validates :content, presence: true
+end

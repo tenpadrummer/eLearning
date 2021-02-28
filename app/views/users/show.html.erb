@@ -1,0 +1,60 @@
+<div class="container pt-5">
+  <div class="row">
+    <div class="col-lg-3 mt-5">
+      <div class="card mb-3">
+        <div class="card-body text-center float-left">
+          <%= link_to gravatar_for @user, size: 400%>
+            <h3><%= @user.nickname%></h3>
+            <hr />
+            <div class="row">
+              <div class="col">
+                <h3><%= @user.following.count %></h3>
+                <small>Following</small><br />
+                <h3><%= @user.followers.count %></h3>
+                <small>Followers</small><br />
+              </div>
+            </div>
+            <div class="col text-center btn-sm">
+              <% unless current_user == @user %>
+                <% if current_user.following?(@user) %>
+                  <%= render "unfollow", user: @user %>
+                <% else %>
+                  <%= render "follow", user: @user %>
+                <% end %>
+              <% end %>
+            </div>
+            <%= link_to "Learned words", user_words_path(current_user), class: "border-bottom"%><br />
+            <% if current_user == @user %>
+              <%= link_to "Edit", edit_user_path(current_user), class: "btn btn-outline-primary float-center btn-sm"%>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-9 pt-5">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="pl-1">Activities</h4>
+            <hr />
+            <% if !@activities.blank? %>
+              <% @activities.each do |activity| %>
+                <div class="media p-3">
+                  <%= link_to gravatar_for @user, size: 100%>
+                  <div class="media-body p-2">
+                    <% if activity.action_type == "Lesson"%>
+                      <h4 class="ml-2"><%= activity.action.user.nickname %> learned <%= activity.action.category.words.count %> of <%= activity.action.category.words.count %> in <%=activity.action.category_id %></h4>
+                    <% else %>
+                      <h4 class="ml-2"><%= @user.nickname%> followed <%= rel_activity(activity.action_id).nickname%></h4>
+                    <% end %>
+                  </div>
+                </div>
+                <hr />
+              <% end %>
+            <% else %>
+              <h4 class="text-center">Nothing to show</h4>
+            <% end%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

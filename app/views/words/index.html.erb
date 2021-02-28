@@ -1,0 +1,56 @@
+<div class="container pt-5">
+  <div class="row">
+    <div class="col-lg-3 mt-5">
+      <div class="card mb-3">
+        <div class="card-body text-center float-left">
+          <%= link_to gravatar_for(@user)%>
+          <h3><%= current_user.nickname %></h3>
+          <hr />
+          <h3><%= @user.following.count %></h3>
+          <small>Following</small><br />
+          <h3><%= @user.followers.count %></h3>
+          <small>Followers</small>
+          <hr />
+          <h3><%=@answers.count %></h3>
+          <small>Words learned</small>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-9 pt-5">
+      <div class="card">
+        <div class="card-header">
+          <h6>Words Learned</h6>
+          <%= link_to "Back to Dashboard", root_path, class: "text-left" %>
+        </div>
+        <div class="card-body">
+        <table class="table table-striped table-bordered text-center">
+          <thead>
+            <tr>
+              <th><h6>Word</h6></th>
+              <th><h6>Correct Answer</h6></th>
+              <th><h6>Your Answer</h6></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @answers.each do |answer| %>
+              <tr>
+                <td><%=answer.word.content %></td>
+                <td><%=answer.word.correct_choice.content %></td>
+                <td><%=answer.choice.content %></td>
+                <td>
+                  <% if answer.choice.content == answer.word.correct_choice.content %>
+                    <h5 class="text-center"><%= fa_icon "check", class: "answer.choice.correct" %></h5>
+                  <% else %>
+                    <h5 class="text-center"><%= fa_icon "times", class: "answer.choice.correct" %></h5>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>

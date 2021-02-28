@@ -1,0 +1,30 @@
+<br />
+<br />
+<h1 class="text-center pt-5">Users List</h1>
+<div class="container">
+  <div class="row">
+    <% @users.each do |user| %>
+      <div class="col-lg-9 offset-3 mx-auto">
+        <div class="media p-2">
+          <div class="align-self-center border mr-3">
+            <%= link_to gravatar_for(user), user%>
+          </div>
+          <div class="media-body p-2">
+            <h3><%= link_to user.nickname, user %></h3>
+          </div>
+          <% unless current_user == user %>
+            <% if current_user.following?(user) %>
+              <%= render "unfollow", user: user %>
+            <% else %>
+              <%= render "follow", user: user %>
+            <% end %>
+          <% end %>
+          <hr />
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="paginate text-center pt-3">
+  <%= will_paginate %>
+</div>

@@ -1,0 +1,26 @@
+<div class="container lesson pt-5">
+  <div class="row">
+    <div class= "col-lg-6 offset-3 mx-auto">
+      <h1 class="text-center m-5"><%= @lesson.category.title %></h1>
+      <hr />
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card card-body">
+            <h3 class="text-center">? <%= @lesson.next_word.content %> ?</h3>
+            <h5 class="text-right m-2"><%= (@lesson.answers).count + 1  %>of<%= @lesson.category.words.count %></h5>
+          </div>
+          <div class="card card-body">
+            <% @lesson.next_word.choices.each do |choice| %>
+              <%= form_for([:lesson, @lesson.answers.build]) do |f| %>
+                <%= hidden_field_tag :choice_id, choice.id%>
+                <%= hidden_field_tag :word_id, choice.word_id%>
+                <%= f.submit choice.content, class: "btn btn-lg d-block btn-info mx-auto" %>
+              <% end %>
+              <hr />
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

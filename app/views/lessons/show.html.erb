@@ -1,0 +1,42 @@
+<div class="container pt-5">
+  <div class="row">
+    <div class= "col-lg-6 offset-3 mx-auto">
+      <h1 class="text-center mt-5"><%= @lesson.category.title %></h1>
+      <br />
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card card-body">
+            <table>
+              <tbody>
+                <tr>
+                  <td class="border-bottom text-center"><h4 class="text-danger">Your answer</h4></td>
+                  <td class="border-bottom text-center"><h4 class="text-danger">Correct answer</h4></td>
+                  <td class="border-bottom text-center"><h4></h4></td>
+                </tr>
+                <% @lesson.answers.each do |answer| %>
+                  <tr>
+                    <td class="text-center pt-1"><h5><%= answer.choice.content %></h5></td>
+                    <td class="text-center pt-1"><h5><%= answer.word.correct_choice.content %></h5></td>
+                    <td class="pt-1">
+                      <% if answer.choice.content == answer.word.correct_choice.content %>
+                        <h5 class="text-center"><%= fa_icon "check", class: "answer.choice.correct" %></h5>
+                      <% else %>
+                        <h5 class="text-center"><%= fa_icon "times", class: "answer.choice.correct" %></h5>
+                      <% end %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+            <div class="col-lg-12 pt-3">
+              <div class="card card-body">
+                <h3>Your result</h3>
+                <h3 class="text-right"><%= @lesson.correct_choice.count %> of <%= @lesson.category.words.count %></h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

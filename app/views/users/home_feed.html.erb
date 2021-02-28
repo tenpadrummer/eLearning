@@ -1,0 +1,45 @@
+<div class="container pt-5">
+  <div class="row">
+    <div class="col-lg-3 mt-5">
+      <div class="card mb-3">
+        <div class="card-body text-center float-left">
+          <h4 class="p-1">Dashboard</h4>
+          <%= gravatar_for current_user %>
+          <h3 class="p-1"><%= current_user.nickname %></h3>
+          <%= current_user.email %><br />
+          <%= link_to "Learned words", user_words_path(current_user), class: "m-auto"%><br />
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-9 pt-5">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="pl-1">Activities</h4>
+          <hr />
+          <% if !@activities.nil? %>
+            <% @activities.each do |activity| %>
+              <% if activity.action_type == "Lesson"%>
+                <div class="media p-2">
+                  <%= link_to gravatar_for activity.user, size: 100%>
+                  <div class="media-body p-2">
+                    <h4 class="ml-2"><%= activity.action.user.nickname %> learned <%= activity.action.category.words.count %> of <%= activity.action.category.words.count %> in <%=activity.action.category.title %></h4>
+                  </div>
+                </div>
+              <% else %>
+                <div class="media p-2">
+                  <%= link_to gravatar_for activity.user, size: 100 %>
+                  <div class="media-body p-auto m-auto">
+                    <h4 class="ml-2"><%= activity.user.nickname %> followed  <%=link_to user_act(activity.action.followed_id).nickname, user_path(user_act(activity.action.followed_id).id) %></h4>
+                  </div>
+                </div>
+              <% end %>
+              <hr />
+            <% end %>
+          <% else %>
+            <h4 class="text-center">Nothing to show</h4>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
